@@ -26,8 +26,9 @@ public enum Dalle {
    
    case dalle2(Dalle2ImageSize)
    case dalle3(Dalle3ImageSize)
+   case custom(modelCode: String, size: Dalle2ImageSize)
    
-   public enum Dalle2ImageSize: String {
+   public enum Dalle2ImageSize: String, Codable, CaseIterable {
       case small = "256x256"
       case medium = "512x512"
       case large = "1024x1024"
@@ -41,8 +42,12 @@ public enum Dalle {
    
    var model: String {
       switch self {
-      case .dalle2: return Model.dalle2.value
-      case .dalle3: return Model.dalle3.value
+      case .dalle2:
+         return Model.dalle2.value
+      case .dalle3:
+         return Model.dalle3.value
+      case .custom(let modelCode, _):
+         return modelCode
       }
    }
    
@@ -52,6 +57,8 @@ public enum Dalle {
          return dalle2ImageSize.rawValue
       case .dalle3(let dalle3ImageSize):
          return dalle3ImageSize.rawValue
+      case .custom(_, let size):
+         return size.rawValue
       }
    }
 }

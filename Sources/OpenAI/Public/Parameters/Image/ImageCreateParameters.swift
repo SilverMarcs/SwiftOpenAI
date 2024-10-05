@@ -27,7 +27,7 @@ public struct ImageCreateParameters: Encodable {
    /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices)
    let user: String?
    
-   public enum ImageSize: String {
+   public enum ImageSize: String, CaseIterable {
       case small = "256x256"
       case medium = "512x512"
       case large = "1024x1024"

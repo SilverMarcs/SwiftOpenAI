@@ -24,6 +24,7 @@ public class OpenAIServiceFactory {
    public static func service(
       apiKey: String,
       organizationID: String? = nil,
+      baseURL: String,
       configuration: URLSessionConfiguration = .default,
       decoder: JSONDecoder = .init(),
       debugEnabled: Bool = false)
@@ -32,6 +33,7 @@ public class OpenAIServiceFactory {
       DefaultOpenAIService(
          apiKey: apiKey,
          organizationID: organizationID,
+         baseURL: baseURL,
          configuration: configuration,
          decoder: decoder,
          debugEnabled: debugEnabled)
